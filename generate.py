@@ -4,7 +4,7 @@ import random
 Returns a 2D list with True marking mines
 and False marking safe spaces
 """
-def generate(mines=99, width=30, height=16):
+def generate_field(mines=99, width=30, height=16):
     remaining_squares = width * height
     field = []
     for y in range(height):

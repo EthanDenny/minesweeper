@@ -1,15 +1,6 @@
-from generate import *
-
-
-def get_next_move(play_field):
-    width = len(play_field[0])
-    height = len(play_field)
-
-    # Placeholder: picks a random position
-    x = random.randint(0, width - 1)
-    y = random.randint(0, height - 1)
-
-    return x, y, "EXPLORE"
+import brain
+import generate
+import random
 
 
 # Pretty prints a minefield
@@ -70,13 +61,13 @@ def play_move(play_field, minefield, x, y, action):
 
 
 def play_game(mines=99, width=30, height=16):
-    minefield = generate(mines, width, height)
+    minefield = generate.generate_field(mines, width, height)
     play_field = [[None] * width for y in range(height)]
 
     mines_left = mines
 
     while mines_left > 0:
-        x, y, action = get_next_move(play_field)
+        x, y, action = brain.get_next_move(play_field)
         if action == "MARK":
             mines_left -= 1
         
@@ -90,6 +81,7 @@ def play_game(mines=99, width=30, height=16):
     print('Solved the puzzle!')
     print()
     output(play_field)
+
 
 if __name__ == "__main__":
     play_game()
