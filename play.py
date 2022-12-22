@@ -26,7 +26,12 @@ def play_move(play_field, minefield, x, y, action):
             for mine_x in range(width):
                 for mine_y in range(height):
                     if minefield[mine_y][mine_x]:
-                        play_field[mine_y][mine_x] = '*'
+                        if mine_x == x and mine_y == y:
+                            play_field[mine_y][mine_x] = 'X'
+                        elif play_field[mine_y][mine_x] == '%':
+                            play_field[mine_y][mine_x] = '!'
+                        else:
+                            play_field[mine_y][mine_x] = '*'
 
             return True
 
