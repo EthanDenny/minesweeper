@@ -69,10 +69,11 @@ def play_game(mines=99, width=30, height=16):
     minefield = generate.generate_field(mines, width, height)
     play_field = [[None] * width for y in range(height)]
 
+    ai = brain.Brain(play_field)
     mines_left = mines
 
     while mines_left > 0:
-        x, y, action = brain.get_next_move(play_field)
+        x, y, action = ai.get_next_move(play_field)
         if action == "MARK":
             mines_left -= 1
         
